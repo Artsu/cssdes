@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import NESTopMiddle from './NESTopMiddle'
+import NESBottomMiddle from './NESBottomMiddle'
 import { breakpoints, NINTENDO_MOBILE_RATIO as NMR } from '../theme'
 
 const NESTop = styled.div`
@@ -73,36 +74,6 @@ const BottomLeftCorner = styled.div`
   }
 `
 
-const nesBottomMiddleHeight = 130
-const nesBottomMiddleWidth = 650
-const NESBottomMiddle = styled.div`
-  display: flex;
-  background: #696b78;
-  height: ${nesBottomMiddleHeight}px;
-  width: ${nesBottomMiddleWidth}px;
-
-  @media only screen and (max-width: ${breakpoints.mobile}) {
-    height: ${nesBottomMiddleHeight / NMR}px;
-    width: ${nesBottomMiddleWidth / NMR}px;
-  }
-`
-
-const controllerStripeWidth = 120
-const controllerStripeHeight = 130
-const controllerStripeMarginLeft = 235
-const ControllerStripe = styled.div`
-  width: ${controllerStripeWidth}px;
-  height: ${controllerStripeHeight}px;
-  margin-left: ${controllerStripeMarginLeft}px;
-  background: #2c2c2c;
-
-  @media only screen and (max-width: ${breakpoints.mobile}) {
-    width: ${controllerStripeWidth / NMR}px;
-    height: ${controllerStripeHeight / NMR}px;
-    margin-left: ${controllerStripeMarginLeft / NMR}px;
-  }
-`
-
 const BottomRightCorner = styled.div`
   width: 0;
   height: 0;
@@ -112,22 +83,6 @@ const BottomRightCorner = styled.div`
 
   @media only screen and (max-width: ${breakpoints.mobile}) {
     border-width: ${bottomCornerWidth / NMR}px ${bottomCornerHeight / NMR}px 0 0;
-  }
-`
-
-const ioContainerMarginLeft = 40
-const ioContainerMarginHeight = 90
-const ioContainerMarginWidth = 200
-const IOContainer = styled.div`
-  margin-left: ${ioContainerMarginLeft}px;
-  height: ${ioContainerMarginHeight}px;
-  width: ${ioContainerMarginWidth}px;
-  border: 1px solid gray;
-
-  @media only screen and (max-width: ${breakpoints.mobile}) {
-    margin-left: ${ioContainerMarginLeft / NMR}px;
-    height: ${ioContainerMarginHeight / NMR}px;
-    width: ${ioContainerMarginWidth / NMR}px;
   }
 `
 
@@ -167,10 +122,7 @@ class Nintendo extends React.Component {
               <BottomPush />
               <BottomLeftCorner />
             </NESBottomEnd>
-            <NESBottomMiddle>
-              <IOContainer>Power</IOContainer>
-              <ControllerStripe />
-            </NESBottomMiddle>
+            <NESBottomMiddle />
             <NESBottomEnd>
               <BottomPush />
               <BottomRightCorner />

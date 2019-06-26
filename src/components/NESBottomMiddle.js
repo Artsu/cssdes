@@ -82,19 +82,39 @@ const frontButtonPadding = 5
 const FrontButton = styled.div`
   font-family: NesController;
   color: #f9000f;
-  font-size: 10px;
+  font-size: 14px;
   width: ${frontButtonWidth}px;
   height: ${frontButtonHeight}px;
   padding: ${frontButtonPadding}px;
   border: 3px solid #848695;
   border-style: groove;
   display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  cursor: pointer;
 
   @media only screen and (max-width: ${breakpoints.mobile}) {
     width: ${frontButtonWidth / NMR}px;
     height: ${frontButtonHeight / NMR}px;
     padding: ${frontButtonPadding / NMR}px;
+    font-size: 10px;
   }
+
+  :active {
+    background: #4d4e58;
+    border: 2px solid #848695;
+    border-style: inset;
+    margin: 0 1px;
+  }
+
+  ${props =>
+    props.isActive &&
+    `
+    background: #4d4e58;
+    border: 2px solid #848695;
+    border-style: inset;
+    margin: 0 1px;
+  `}
 `
 
 export default () => {

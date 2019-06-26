@@ -1,26 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import styled from 'styled-components'
+import Nintendo from './components/Nintendo'
+
+const StyledApp = styled.div`
+  #background: #2c2e28;
+  min-height: 100vh;
+`
+
+const ResponsiveNintendoWrapper = styled.div`
+  display: flex;
+`
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <StyledApp className="App">
+      <ResponsiveNintendoWrapper>
+        <Nintendo />
+      </ResponsiveNintendoWrapper>
+    </StyledApp>
+  )
 }
 
-export default App;
+export default App

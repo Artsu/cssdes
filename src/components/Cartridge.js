@@ -1,5 +1,5 @@
+import React, { Component } from 'react'
 import styled from 'styled-components'
-import React from 'react'
 import { breakpoints, NINTENDO_MOBILE_RATIO as NMR } from '../theme'
 
 const cartMargin = 2
@@ -32,6 +32,18 @@ const Cart = styled.div`
     }
   }
 
+  @keyframes slideOut {
+    from {
+      transform: translate3d(0, ${cartAnimationStop}px, 0);
+    }
+    30% {
+      transform: translate3d(0, ${cartAnimationBottom}px, 0);
+    }
+    to {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
   @keyframes slideInMobile {
     from {
       transform: translate3d(0, 0, 0);
@@ -44,14 +56,40 @@ const Cart = styled.div`
     }
   }
 
+  @keyframes slideOutMobile {
+    from {
+      transform: translate3d(0, ${cartAnimationStop / NMR}px, 0);
+    }
+    30% {
+      transform: translate3d(0, ${cartAnimationBottom / NMR}px, 0);
+    }
+    to {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
   ${props =>
+    !props.initialRender &&
     props.isDown &&
     `
       animation: slideIn 0.5s cubic-bezier(0.645, 0.045, 0.355, 1) 1;
       animation-fill-mode: forwards;
-       
+             
       @media only screen and (max-width: ${breakpoints.mobile}) {
         animation: slideInMobile 0.5s cubic-bezier(0.645, 0.045, 0.355, 1) 1;
+        animation-fill-mode: forwards;
+      }  
+  `}
+
+  ${props =>
+    !props.initialRender &&
+    !props.isDown &&
+    `
+      animation: slideOut 0.5s cubic-bezier(0.645, 0.045, 0.355, 1) 1;
+      animation-fill-mode: forwards;
+                   
+      @media only screen and (max-width: ${breakpoints.mobile}) {
+        animation: slideOutMobile 0.5s cubic-bezier(0.645, 0.045, 0.355, 1) 1;
         animation-fill-mode: forwards;
       }  
   `}
@@ -193,7 +231,7 @@ const GameTag = styled.div`
     width: ${gameTagWidth / NMR}px;
     padding: ${gameTagPadding.vertical / NMR}px
       ${gameTagPadding.horizontal / NMR}px;
-    font-size: 8px;
+    font-size: 7px;
   }
 `
 
@@ -219,16 +257,30 @@ const BottomSlope = styled.div`
   }
 `
 
-export default props => {
-  return (
-    <Cart isDown={props.isDown}>
-      <Clip />
-      <SplitLine />
-      <SplitLine />
-      <GameTag>Super Fläsä Bros</GameTag>
-      <ThinPart />
-      <Clip />
-      <BottomSlope />
-    </Cart>
-  )
+export default class Cartridge extends Component {
+  state = {
+    initialRender: true
+  }
+
+  componentWillReceiveProps = nextProps => {
+    if (this.props.isDown !== nextProps.isDown) {
+      this.setState({
+        initialRender: false
+      })
+    }
+  }
+
+  render() {
+    return (
+      <Cart isDown={this.props.isDown} initialRender={this.state.initialRender}>
+        <Clip />
+        <SplitLine />
+        <SplitLine />
+        <GameTag>Super Wunder Bros</GameTag>
+        <ThinPart />
+        <Clip />
+        <BottomSlope />
+      </Cart>
+    )
+  }
 }

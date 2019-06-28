@@ -97,27 +97,25 @@ const HatchTop = styled.div`
   margin-left: ${hatchMarginLeft}px;
   width: ${hatchWidth}px;
   height: ${hatchHeight}px;
-  height: 0;
-  top: 0;
+  top: ${-hatchTopOpenHeight}px;
+  height: ${hatchTopOpenHeight}px;
   border: 1px solid gray;
-  transition: height 0.5s 0.1s, top 0.5s 0.1s;
+  transform: rotate3d(1, 0, 0, 90deg);
+  transition: transform 0.5s;
+  transform-origin: 0% 100%;
 
   @media only screen and (max-width: ${breakpoints.mobile}) {
     margin-left: ${hatchMarginLeft / NMR}px;
     width: ${hatchWidth / NMR}px;
-    height: ${hatchHeight / NMR}px;
+    top: ${-hatchTopOpenHeight / NMR}px;
+    height: ${hatchTopOpenHeight / NMR}px;
   }
 
   ${props =>
     props.isOpen &&
     `
-    height: ${hatchTopOpenHeight}px;
-    top: ${-hatchTopOpenHeight}px;
-    
-    @media only screen and (max-width: ${breakpoints.mobile}) {
-      height: ${hatchTopOpenHeight / NMR}px;
-      top: ${-hatchTopOpenHeight / NMR}px;
-    }
+    transition: transform 0.5s 0.15s;
+    transform: rotate3d(1, 0, 0, 0deg);
   `}
 `
 

@@ -87,32 +87,14 @@ const BottomRightCorner = styled.div`
 `
 
 class Nintendo extends React.Component {
-  state = {
-    isOpen: true,
-    cartIsDown: false
-  }
-
-  componentDidMount() {
-    setTimeout(() => {
-      this.setState({
-        cartIsDown: true
-      })
-      setTimeout(() => {
-        this.setState({
-          isOpen: false
-        })
-      }, 800)
-    }, 1000)
-  }
-
   render() {
     return (
       <div className={this.props.className}>
         <NESTop>
           <NESTopLeft />
           <NESTopMiddle
-            isOpen={this.state.isOpen}
-            cartIsDown={this.state.cartIsDown}
+            isOpen={this.props.isOpen}
+            cartIsDown={this.props.cartIsDown}
           />
           <NESTopRight />
         </NESTop>
@@ -135,7 +117,7 @@ class Nintendo extends React.Component {
 }
 
 const StyledNintendo = styled(Nintendo)`
-  padding-top: 200px;
+  padding-top: 100px;
   filter: drop-shadow(0 0 5px grey);
   margin: auto;
 `

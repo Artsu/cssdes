@@ -132,6 +132,41 @@ const GrayStripe = styled.div`
   }
 `
 
+const curvedLineTopMargin = 20
+const curvedLineTopHeight = 70
+const curvedLineBorderRadius = 7
+const CurvedLineTop = styled.div`
+  margin-top: ${curvedLineTopMargin}px;
+  height: ${curvedLineTopHeight}px;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  border-radius: ${curvedLineBorderRadius}px;
+
+  @media only screen and (max-width: ${breakpoints.mobile}) {
+    margin-top: ${curvedLineTopMargin / NMR}px;
+    height: ${curvedLineTopHeight / NMR}px;
+    border-radius: ${curvedLineBorderRadius / NMR}px;
+  }
+`
+const curvedLineBottomMargin = 3
+const curvedLineBottomHeight = 18
+const CurvedLineBottom = styled.div`
+  margin-top: 3px;
+  height: ${curvedLineBottomHeight}px;
+  border-top: 1px solid black;
+  border-radius: ${curvedLineBorderRadius}px;
+
+  @media only screen and (max-width: ${breakpoints.mobile}) {
+    margin-top: ${curvedLineBottomMargin / NMR}px;
+    height: ${curvedLineBottomHeight / NMR}px;
+    border-radius: ${curvedLineBorderRadius / NMR}px;
+  }
+`
+
+const BottomLine = styled.div`
+  border-bottom: 1px solid black;
+`
+
 const logoMarginTop = 30
 const logoMarginleft = 15
 const Logo = styled.div`
@@ -171,7 +206,11 @@ export default props => {
         <Logo>Dindendo</Logo>
         <SubLogo>Enterntainment System</SubLogo>
       </HatchFront>
-      <GrayStripe />
+      <GrayStripe>
+        <CurvedLineTop />
+        <CurvedLineBottom />
+        <BottomLine />
+      </GrayStripe>
     </NESTopMiddle>
   )
 }

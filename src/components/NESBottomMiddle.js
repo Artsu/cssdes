@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import ControllerStripe from './ControllerStripe'
 import { breakpoints, NINTENDO_MOBILE_RATIO as NMR } from '../theme'
 
 const bottomMiddleHeight = 130
@@ -16,21 +17,6 @@ const BottomMiddle = styled.div`
   }
 `
 
-const controllerStripeWidth = 120
-const controllerStripeHeight = 130
-const controllerStripeMarginLeft = 195
-const ControllerStripe = styled.div`
-  width: ${controllerStripeWidth}px;
-  height: ${controllerStripeHeight}px;
-  margin-left: ${controllerStripeMarginLeft}px;
-  background: #2c2c2c;
-
-  @media only screen and (max-width: ${breakpoints.mobile}) {
-    width: ${controllerStripeWidth / NMR}px;
-    height: ${controllerStripeHeight / NMR}px;
-    margin-left: ${controllerStripeMarginLeft / NMR}px;
-  }
-`
 const ioContainerMarginLeft = 40
 const ioContainerMarginHeight = 90
 const ioContainerPadding = {

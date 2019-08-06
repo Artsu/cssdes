@@ -137,6 +137,13 @@ const SlotFormBottomPart = styled.div`
   }
 `
 
+const slotPinSize = 8
+const slotPinLeftPosition = 6
+const slotPinRightPosition = 16
+const slotPinRow1Top = 4
+const slotPinRow2Top = 13
+const slotPinRow3Top = 22
+const slotPinRow4Top = 31
 const SlotPins = styled(({ className }) => {
   return (
     <div className={className}>
@@ -158,40 +165,75 @@ const SlotPins = styled(({ className }) => {
 
   & .pin {
     position: absolute;
-    width: 8px;
-    height: 8px;
+    width: ${slotPinSize}px;
+    height: ${slotPinSize}px;
     border-radius: 10px;
     background: #3d3d3d;
+
+    @media only screen and (max-width: ${breakpoints.mobile}) {
+      width: ${slotPinSize / NMR}px;
+      height: ${slotPinSize / NMR}px;
+    }
   }
 
   & .left-pin {
-    left: 6px;
+    left: ${slotPinLeftPosition}px;
   }
-
   & .right-pin {
-    left: 16px;
+    left: ${slotPinRightPosition}px;
   }
 
   & .pin1 {
-    top: 4px;
+    top: ${slotPinRow1Top}px;
   }
   & .pin2 {
-    top: 13px;
+    top: ${slotPinRow2Top}px;
   }
   & .pin3 {
-    top: 22px;
+    top: ${slotPinRow3Top}px;
   }
   & .pin4 {
-    top: 31px;
+    top: ${slotPinRow4Top}px;
   }
   & .pin5 {
-    top: 13px;
+    top: ${slotPinRow2Top}px;
   }
   & .pin6 {
-    top: 22px;
+    top: ${slotPinRow3Top}px;
   }
   & .pin7 {
-    top: 31px;
+    top: ${slotPinRow4Top}px;
+  }
+
+  @media only screen and (max-width: ${breakpoints.mobile}) {
+    & .left-pin {
+      left: ${slotPinLeftPosition / NMR}px;
+    }
+    & .right-pin {
+      left: ${slotPinRightPosition / NMR}px;
+    }
+
+    & .pin1 {
+      top: ${slotPinRow1Top / NMR}px;
+    }
+    & .pin2 {
+      top: ${slotPinRow2Top / NMR}px;
+    }
+    & .pin3 {
+      top: ${slotPinRow3Top / NMR}px;
+    }
+    & .pin4 {
+      top: ${slotPinRow4Top / NMR}px;
+    }
+    & .pin5 {
+      top: ${slotPinRow2Top / NMR}px;
+    }
+    & .pin6 {
+      top: ${slotPinRow3Top / NMR}px;
+    }
+    & .pin7 {
+      top: ${slotPinRow4Top / NMR}px;
+    }
   }
 `
 
